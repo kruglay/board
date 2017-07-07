@@ -16,6 +16,9 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+app = YAML.load(File.read(File.expand_path('../app.yml', __FILE__)))
+app.symbolize_keys!
+
 module Board
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
