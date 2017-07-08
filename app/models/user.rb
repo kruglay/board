@@ -4,7 +4,6 @@
 #
 #  id                     :integer          not null, primary key
 #  name                   :string           default(""), not null
-#  sex                    :integer          default("female"), not null
 #  login                  :string           default(""), not null
 #  day_in_service         :integer
 #  contacts               :string
@@ -54,8 +53,10 @@ class User < ApplicationRecord
   validates :email, :login, :name, presence: true
   validates :email, :login, :name, length: { maximum: 100}
 
-  # options {f_name:"", s_name:"", m_name:""}
-  def set_name(fio)
-    name = "#{fio[:f_name]} #{fio[:s_name]} #{fio[:m_name]}"
-  end
+  # personal_info: { date_of_birth:, sex: , city: }
+  serialize :personal_info, Hash
+  # contacts: {telephone:""}
+  serialize :contacts, Hash
+
+  attr_accessor :f_name, :s_name, :m_name
 end

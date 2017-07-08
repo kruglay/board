@@ -17,6 +17,7 @@
 !/log/.keep
 !/tmp/.keep
 .rake_tasks~
+config/app.yml
 
 /node_modules
 /yarn-error.log
