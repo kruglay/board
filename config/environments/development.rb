@@ -59,15 +59,13 @@ Rails.application.configure do
     :host => 'localhost:3000'
   }
 
-  # отправка почты по протоколу SMTP
   config.action_mailer.delivery_method = :smtp
 
-  # Настройки для работы через GMail аккаунт
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: '587',
-    user_name: 'testkruglay', # не используйте для тестов свои реальные ящики
-    password: app[:pass], # не храните здесь пароль!
+    user_name: 'testkruglay',
+    password: CONFIG[:pass],
     authentication: 'plain',
     enable_starttls_auto: true
   }

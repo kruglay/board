@@ -1,0 +1,61 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  name                   :string           default(""), not null
+#  sex                    :integer          default("female"), not null
+#  login                  :string           default(""), not null
+#  day_in_service         :integer
+#  contacts               :string
+#  personal_info          :string
+#  rate_employer          :integer
+#  rate_contractor        :integer
+#  user_type              :integer          not null
+#  inactive               :boolean
+#  locked_to_date         :date
+#  blocked                :boolean
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string
+#  last_sign_in_ip        :string
+#  role                   :integer
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
+#
+# Indexes
+#
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_login                 (login) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#
+
+class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # , :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+
+  enum user_type: [:employer, :contractor]
+  enum role: [:user, :moderator, :admin]
+
+  # validations
+  validates :email, :login, uniqueness: { case_sensitive: false }
+  validates :email, :login, :name, presence: true
+  validates :email, :login, :name, length: { maximum: 100}
+
+  # options {f_name:"", s_name:"", m_name:""}
+  def set_name(fio)
+    name = "#{fio[:f_name]} #{fio[:s_name]} #{fio[:m_name]}"
+  end
+end
