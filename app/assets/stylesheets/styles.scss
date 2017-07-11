@@ -1,0 +1,17 @@
+@import "colors";
+
+body {
+  width: 1024px;
+  margin: auto;
+}
+
+.header {
+  background-color: $bgc;
+  height: 200px;
+}
+
+
+.logo-img {
+  height: 80px;
+  width: 150px;
+}
