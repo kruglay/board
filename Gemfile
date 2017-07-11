@@ -44,7 +44,10 @@ gem 'devise-i18n'
 gem 'recaptcha', :require => 'recaptcha/rails'
 
 # bootstrap
-gem 'twitter-bootstrap-rails'
+gem 'bootstrap-sass', '~> 3.3.6'
+
+# jquery
+gem 'jquery-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

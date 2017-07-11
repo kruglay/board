@@ -1,17 +1,33 @@
 @import "colors";
 
 body {
-  width: 1024px;
+  width: 1200px;
   margin: auto;
 }
 
 .header {
   background-color: $bgc;
-  height: 200px;
+  height: 190px;
 }
 
+.logo {
+  padding: 10px;
+  height: 100px;
+  width: 200px;
+}
 
 .logo-img {
-  height: 80px;
-  width: 150px;
+  height: 90px;
+  width: 180px;
 }
+
+.header-nav {
+  padding-top: 30px;
+  width: 400px;
+  font-size: large;
+  margin: auto;
+}
+
+//.nav-link {
+//  margin: auto;
+//}

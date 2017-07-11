@@ -12,6 +12,29 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
+    <div class="header">
+      <div class="logo">
+        <%= image_tag 'logo.jpg', alt: 'logo' , class: 'logo-img'%>
+      </div>
+      <ul class="header-nav nav nav-tabs">
+        <li class="nav-link">
+          <%= link_to t('.advertisements'), '/#', class: "btn btn-default" %>
+        </li>
+        <li class="nav-link">
+          <%= link_to t('.users'), '/#', class: "btn btn-default" %>
+        </li>
+        <li class="nav-link">
+          <%= link_to t('.rules'), '/#', class: "btn btn-default" %>
+        </li>
+        <li class="nav-link">
+          <%= link_to t('.help'), '/#', class: "btn btn-default" %>
+        </li>
+        <li class="nav-link">
+          <%= link_to t('.forum'), '/#', class: "btn btn-default" %>
+        </li>
+      </ul>
+    </div>
+
     <%= yield %>
   </body>
 </html>

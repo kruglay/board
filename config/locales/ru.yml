@@ -1,2 +1,26 @@
 ru:
   hello: "Привет мир"
+  activerecord:
+    models:
+    attributes:
+      user:
+        login: Логин
+        f_name: Имя
+        s_name: Фамилия
+        m_name: Отчество
+#        password: Пароль(%{num} знаков минимум)
+  users:
+    registrations:
+      new:
+        sign_up: Зарегистрироваться
+        path_length: знаков минимум
+    sessions:
+      new:
+        sign_in: Войти
+        sign_in_with: Войти с помощью
+    passwords:
+      new:
+        forgot: Забыли свой пароль?
+    confirmation:
+      new:
+        no_instructions: Не получили письмо с подтверждением?
