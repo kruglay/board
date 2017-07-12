@@ -1,7 +1,7 @@
 @import "colors";
 
 body {
-  width: 1200px;
+  min-width: 1024px;
   margin: auto;
 }
 
@@ -22,12 +22,18 @@ body {
 }
 
 .header-nav {
+  display: flex;
+  justify-content: center;
   padding-top: 30px;
-  width: 400px;
+  width: 50%;
   font-size: large;
   margin: auto;
 }
 
-//.nav-link {
-//  margin: auto;
-//}
+.nav-link {
+  padding: 0px 5px;
+}
+
+.shared-links {
+  padding-top: 10px;
+}
