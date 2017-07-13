@@ -37,3 +37,15 @@ body {
 .shared-links {
   padding-top: 10px;
 }
+
+// take it from gem devise-bootstrap (https://github.com/hisea/devise-bootstrap-views)
+.float-none {
+  float: none;
+}
+
+.panel-heading {
+  padding: 15px;
+  h4 {
+    margin: 0px;
+  }
+}
