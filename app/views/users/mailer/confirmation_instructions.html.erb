@@ -1,6 +1,24 @@
-<p><%= t('.greeting', recipient: @resource.email, default: "Welcome #{@resource.email}!") %></p>
+<%= bootstrap_devise_error_messages! %>
 
-<p><%= t('.instruction', default: 'You can confirm your account email through the link below:') %></p>
+<% content_for :left do %>
+    тут будут рекламные баннеры
+<% end %>
 
-<p><%= link_to t('.action', default: 'Confirm my account'),
-         confirmation_url(@resource, confirmation_token: @token, locale: I18n.locale) %></p>
+<% content_for :center do %>
+    <p><%= t('.greeting', recipient: @resource.email, default: "Welcome #{@resource.email}!") %></p>
+
+    <p><%= t('.instruction', default: 'You can confirm your account email through the link below:') %></p>
+
+    <p><%= link_to t('.action', default: 'Confirm my account'),
+                   confirmation_url(@resource, confirmation_token: @token, locale: I18n.locale) %></p>
+<% end %>
+
+<% content_for :right do %>
+    тут будут рекламные баннеры
+<% end %>
+
+<%= render layout: "users/threecolumn" do %>
+    <%= yield :left %>
+    <%= yield :center %>
+    <%= yield :left %>
+<% end %>

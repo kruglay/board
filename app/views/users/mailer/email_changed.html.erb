@@ -1,7 +1,23 @@
-<p>Hello <%= @email %>!</p>
+<% content_for :left do %>
+    тут будут рекламные баннеры
+<% end %>
 
-<% if @resource.try(:unconfirmed_email?) %>
-  <p>We're contacting you to notify you that your email is being changed to <%= @resource.unconfirmed_email %>.</p>
-<% else %>
-  <p>We're contacting you to notify you that your email has been changed to <%= @resource.email %>.</p>
+<% content_for :center do %>
+    <p>Hello <%= @email %>!</p>
+
+    <% if @resource.try(:unconfirmed_email?) %>
+        <p>We're contacting you to notify you that your email is being changed to <%= @resource.unconfirmed_email %>.</p>
+    <% else %>
+        <p>We're contacting you to notify you that your email has been changed to <%= @resource.email %>.</p>
+    <% end %>
+<% end %>
+
+<% content_for :right do %>
+    тут будут рекламные баннеры
+<% end %>
+
+<%= render layout: "users/threecolumn" do %>
+    <%= yield :left %>
+    <%= yield :center %>
+    <%= yield :left %>
 <% end %>

@@ -1,7 +1,24 @@
-<p><%= t('.greeting', recipient: @resource.email, default: "Hello #{@resource.email}!") %></p>
 
-<p><%= t('.message', default: 'Your account has been locked due to an excessive amount of unsuccessful sign in attempts.') %></p>
+<% content_for :left do %>
+    тут будут рекламные баннеры
+<% end %>
 
-<p><%= t('.instruction', default: 'Click the link below to unlock your account:') %></p>
+<% content_for :center do %>
+    <p><%= t('.greeting', recipient: @resource.email, default: "Hello #{@resource.email}!") %></p>
 
-<p><%= link_to t('.action', default: 'Unlock my account'), unlock_url(@resource, unlock_token: @resource.unlock_token, locale: I18n.locale) %></p>
+    <p><%= t('.message', default: 'Your account has been locked due to an excessive amount of unsuccessful sign in attempts.') %></p>
+
+    <p><%= t('.instruction', default: 'Click the link below to unlock your account:') %></p>
+
+    <p><%= link_to t('.action', default: 'Unlock my account'), unlock_url(@resource, unlock_token: @resource.unlock_token, locale: I18n.locale) %></p>
+<% end %>
+
+<% content_for :right do %>
+    тут будут рекламные баннеры
+<% end %>
+
+<%= render layout: "users/threecolumn" do %>
+    <%= yield :left %>
+    <%= yield :center %>
+    <%= yield :left %>
+<% end %>

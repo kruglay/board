@@ -1,9 +1,9 @@
 <%= bootstrap_devise_error_messages! %>
-<div class="row">
-  <div class="col-sm-2">
+<% content_for :left do %>
     тут будут рекламные баннеры
-  </div>
-  <div class="col-sm-8">
+<% end %>
+
+<% content_for :center do %>
     <div class="panel panel-default devise-bs">
       <div class="panel-heading">
         <h4><%= t('.title', resource: resource_class.model_name.human, default: "Edit #{resource_name.to_s.humanize}") %></h4>
@@ -34,13 +34,20 @@
         <% end %>
       </div>
     </div>
-  </div>
-  <p><%= t('.unhappy', default: 'Unhappy') %>
-    ? <%= link_to t('.cancel_my_account', default: 'Cancel my account'), registration_path(resource_name), data: {confirm: t('.are_you_sure', default: "Are you sure?")}, method: :delete %>
-    .</p>
 
-  <%= link_to t('.back', default: 'Back'), :back %>
-  <div class="col-sm-2">
+    <p><%= t('.unhappy', default: 'Unhappy') %>
+      ? <%= link_to t('.cancel_my_account', default: 'Cancel my account'), registration_path(resource_name), data: {confirm: t('.are_you_sure', default: "Are you sure?")}, method: :delete %>
+      .</p>
+
+    <%= link_to t('.back', default: 'Back'), :back %>
+<% end %>
+
+<% content_for :right do %>
     тут будут рекламные баннеры
-  </div>
-</div>
+<% end %>
+
+<%= render layout: "users/threecolumn" do %>
+    <%= yield :left %>
+    <%= yield :center %>
+    <%= yield :left %>
+<% end %>
