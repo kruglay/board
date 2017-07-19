@@ -40,18 +40,21 @@
 #
 
 class User < ApplicationRecord
+  has_many :advertisements
+
   # Include default devise modules. Others available are:
   # , :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  enum user_type: [:employer, :contractor]
-  enum role: [:user, :moderator, :admin]
-
   # validations
   validates :email, :login, uniqueness: { case_sensitive: false }
   validates :email, :login, :name, presence: true
   validates :email, :login, :name, length: { maximum: 100}
+
+  # enums
+  enum user_type: [:employer, :contractor]
+  enum role: [:user, :moderator, :admin]
 
   # personal_info: { date_of_birth:, sex: , city: }
   serialize :personal_info, Hash
@@ -59,4 +62,5 @@ class User < ApplicationRecord
   serialize :contacts, Hash
 
   attr_accessor :f_name, :s_name, :m_name
+
 end
