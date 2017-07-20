@@ -7,7 +7,7 @@ class CreateAdvertisements < ActiveRecord::Migration[5.1]
       t.integer :status, null: false
       t.integer :product_type, null: false
       t.integer :ad_type, null: false
-      t.integer :game_type, null: false
+      t.integer :game_type
       t.references :game, foreign_key: true, null: false, index: true
       t.integer :sum
       t.text :text, null: false
@@ -16,7 +16,7 @@ class CreateAdvertisements < ActiveRecord::Migration[5.1]
       t.integer :rating_to_user
       t.text :mention_to_employee
       t.text :mention_to_user
-      t.references :employee, foreign_key: { to_table: user }, index: true
+      t.references :employee, foreign_key: { to_table: :user }, index: true
       t.datetime :finished_at
       t.integer :response_count
       t.integer :watches_count

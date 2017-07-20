@@ -53,8 +53,8 @@ class User < ApplicationRecord
   validates :email, :login, :name, length: { maximum: 100}
 
   # enums
-  enum user_type: [:employer, :contractor]
-  enum role: [:user, :moderator, :admin]
+  enum user_type: [:employer, :contractor],
+       role:      [:user, :moderator, :admin]
 
   # personal_info: { date_of_birth:, sex: , city: }
   serialize :personal_info, Hash

@@ -10,7 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170708070110) do
+ActiveRecord::Schema.define(version: 20170720061550) do
+
+  create_table "advertisements", force: :cascade do |t|
+    t.boolean "inactive"
+    t.integer "user_id", null: false
+    t.string "title", null: false
+    t.integer "status", null: false
+    t.integer "product_type", null: false
+    t.integer "ad_type", null: false
+    t.integer "game_type"
+    t.integer "game_id", null: false
+    t.integer "sum"
+    t.text "text", null: false
+    t.text "services"
+    t.integer "rating_to_employee"
+    t.integer "rating_to_user"
+    t.text "mention_to_employee"
+    t.text "mention_to_user"
+    t.integer "employee_id"
+    t.datetime "finished_at"
+    t.integer "response_count"
+    t.integer "watches_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_advertisements_on_employee_id"
+    t.index ["game_id"], name: "index_advertisements_on_game_id"
+    t.index ["user_id"], name: "index_advertisements_on_user_id"
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.boolean "inactive"
+    t.string "name", null: false
+    t.integer "game_type"
+    t.index ["name"], name: "index_games_on_name"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
