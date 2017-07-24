@@ -35,6 +35,9 @@ gem 'jbuilder', '~> 2.5'
 # authentication
 gem 'devise'
 
+#admin
+gem 'activeadmin', github: 'activeadmin'
+
 # locale
 gem 'i18n'
 gem 'rails-i18n', '~> 5.0.0'

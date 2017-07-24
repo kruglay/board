@@ -43,7 +43,7 @@ class Advertisement < ApplicationRecord
   validates :title, length: { maximum: 300 }
 
   # enums
-  enum status:        [:new, :work, :complete, :closed, :canseled],
+  enum status:        [:new_one, :work, :complete, :closed, :canseled],
        product_type:  [:service, :product],
        ad_type:       [:buy, :sell, :do_service, :need_service],
        game_type:     [:strategy, :action, :simulator]

@@ -1,11 +1,10 @@
-<%= bootstrap_devise_error_messages! %>
-
 <% content_for :left do %>
     тут будут рекламные баннеры
 <% end %>
 
 <% content_for :center do %>
     <div class="panel panel-default devise-bs">
+      <%= bootstrap_devise_error_messages! %>
       <div class="panel-heading">
         <h4><%= t('.resend_confirmation_instructions', default: 'Resend confirmation instructions') %></h4>
       </div>

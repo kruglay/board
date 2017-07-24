@@ -9,8 +9,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super do |resource|
-      resource.name = set_name(sign_up_params)
+    build_resource(sign_up_params)
+    resource.name = set_name(sign_up_params)
+    if resource.save
+      redirect_to root_path
     end
   end
 

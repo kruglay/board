@@ -10,7 +10,7 @@
 #  personal_info          :string
 #  rate_employer          :integer
 #  rate_contractor        :integer
-#  user_type              :integer          not null
+#  user_type              :integer
 #  inactive               :boolean
 #  locked_to_date         :date
 #  blocked                :boolean
@@ -40,11 +40,15 @@
 #
 
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, 
+         :recoverable, :rememberable, :trackable, :validatable
   has_many :advertisements
 
   # Include default devise modules. Others available are:
   # , :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # validations
@@ -53,8 +57,8 @@ class User < ApplicationRecord
   validates :email, :login, :name, length: { maximum: 100}
 
   # enums
-  enum user_type: [:employer, :contractor],
-       role:      [:user, :moderator, :admin]
+  enum user_type: [:employer, :contractor]
+  enum role:      [:user, :moderator, :admin]
 
   # personal_info: { date_of_birth:, sex: , city: }
   serialize :personal_info, Hash
